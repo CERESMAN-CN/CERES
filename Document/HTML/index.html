@@ -1,0 +1,636 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CeresMan</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="45a8d389-c370-4333-ae18-dbb8ad5ebd39" class="page sans"><header><img class="page-cover-image" src="CeresMan%2045a8d389c3704333ae18dbb8ad5ebd39/D-oimR6JX0E.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="CeresMan%2045a8d389c3704333ae18dbb8ad5ebd39/j52wte86loc.jpg"/></div><h1 class="page-title">CeresMan</h1></header><div class="page-body"><div id="8fea4328-63c5-463d-9d30-2b6be30acbe3" class="collection-content"><h4 class="collection-title">TimeLine</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Date</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M9.625,10.8465 C8.91187,10.2891 8.12088,9.926 7,9.26013 L7,8.71938 C7.21175,8.47612 7.392,8.176 7.53813,7.83213 C7.94587,7.7315 8.3125,7.33425 8.3125,7 C8.3125,6.51788 8.1095,6.32713 7.8715,6.17137 C7.8715,6.15562 7.875,6.14162 7.875,6.125 C7.875,5.41362 7.4375,3.5 5.25,3.5 C3.0625,3.5 2.625,5.4145 2.625,6.125 C2.625,6.14162 2.6285,6.15562 2.6285,6.17137 C2.3905,6.32713 2.1875,6.51788 2.1875,7 C2.1875,7.33425 2.55413,7.7315 2.96187,7.833 C3.108,8.176 3.28825,8.47612 3.5,8.71938 L3.5,9.26013 C2.37912,9.92513 1.58812,10.2882 0.875,10.8465 C0.041125,11.4984 0,12.4688 0,14 L10.5,14 C10.5,12.4688 10.4589,11.4984 9.625,10.8465 Z M13.125,7.3465 C12.4119,6.78912 11.6209,6.426 10.5,5.76013 L10.5,5.21938 C10.7118,4.97613 10.892,4.676 11.0381,4.33213 C11.4459,4.2315 11.8125,3.83425 11.8125,3.5 C11.8125,3.01787 11.6095,2.82713 11.3715,2.67138 C11.3715,2.65562 11.375,2.64162 11.375,2.625 C11.375,1.91363 10.9375,0 8.75,0 C6.5625,0 6.125,1.9145 6.125,2.625 C6.125,2.64162 6.1285,2.65562 6.1285,2.67138 C6.11188,2.68275 6.09787,2.69588 6.08125,2.70725 C7.83212,3.066 8.59688,4.54825 8.72813,5.74787 C8.97575,6.00863 9.1875,6.39625 9.1875,7 C9.1875,7.60288 8.771,8.20312 8.18388,8.51462 C8.127,8.624 8.06662,8.729 8.00275,8.82962 C8.155,8.91537 8.30025,8.99675 8.44025,9.07463 C9.08075,9.4325 9.63375,9.74137 10.164,10.1561 C10.3022,10.2638 10.4204,10.3801 10.5289,10.4991 L14,10.4991 C14,8.96875 13.9589,7.99837 13.125,7.3465 Z"></path></svg></span>Property</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Tags</th></tr></thead><tbody><tr id="3651fe3b-2b2c-4620-8b63-3b295e484ab5"><td class="cell-title"><a href="https://www.notion.so/3651fe3b2b2c46208b633b295e484ab5">定义</a></td><td class="cell-A^sX"><time>@Jan 26, 2021</time></td><td class="cell-eF&gt;s"><span class="user"><img src="https://lh4.googleusercontent.com/-l6h4ofVwZ8A/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnMI1kXc-d8ozHE_d52VMvwTEO1hA/photo.jpg" class="icon user-icon"/>winshare Tom</span></td><td class="cell-IxjZ"></td></tr></tbody></table></div><nav id="667cacb4-d4a3-48ad-85c3-8e526049a85c" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c1c70e53-b46d-49c9-bfb2-86783b97fa4f">阶段性目标</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#24f1231d-b384-49b5-9eed-4ad6c79dba29">阶段一</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6163527b-887a-4e84-ad5b-e803247b404c">阶段二</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#042da366-898f-40b7-86a8-0d165d27f7eb">实验环境</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c79cd75b-68b1-476a-a372-9dfd43037932">后端服务</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0c6106db-2948-45ad-ad5c-e72e27c0efec">前端部分</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#13b5a4bf-c1b7-4991-913d-3e8d0be4d4bc">阶段三</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03c35f9a-c0d6-45eb-8762-b44720c2fe31">后端与数据部分相关信息</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32d83fc1-c7af-42f6-b3cf-096ea6f37110">交易接口API</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ded6736d-053b-4357-b11e-ecb6c4075128">数据接口API</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5c4de899-ac47-4a8c-9ac9-26edf1fdb89e">回测接口API</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b51e33c6-f6ed-4ccc-a6a1-95d8e194d2d4">可视化数据接口API</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#53d9e13b-40e3-44c8-a2b5-5051a304e9d7">因子库接口</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#427ba7d5-b2f2-4a1d-ab35-522037bd3c04">策略库</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#338d1adb-b526-4e00-88d3-0feff4e9a2df">前端部分相关信息</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f739a711-66dc-4c81-8ed2-ceaddca1639b">数据可视化</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#10972d73-4a70-4187-b48f-4f303cdafd51">可交互</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c247184-a6ba-4138-8e5f-2a699bda5005">框架</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f93faf5a-53ff-4e34-9828-0c8b8edb1d78">Reference</a></div></nav><hr id="52b44cb2-bb6e-4e20-ba49-283e4c0723e5"/><h1 id="c1c70e53-b46d-49c9-bfb2-86783b97fa4f" class="">阶段性目标</h1><p id="a0928db9-4ede-4822-867e-327d9b57f51b" class="">项目整体分为三个阶段。每个阶段有相应的设计要求与最佳实践。最终目标为达成方便的进行数据因子构建和实验，快速测试回撤，与自动参数调节。</p><p id="c269b982-59b6-4a57-8b6e-924252eb5661" class="">成熟的量化交易系统包括了以下部分：</p><h2 id="24f1231d-b384-49b5-9eed-4ad6c79dba29" class="">阶段一</h2><p id="b027b6d8-b202-4b4b-b6e3-7bc182327793" class="">该阶段的主要设计目标是完成：<div class="indented"><h3 id="4ec371e5-4efa-4980-8f9a-fcd8fbaa11ab" class="">0，规范</h3><ul id="254905bb-ecb0-4dde-bca8-301cfd598807" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">代码规范</span></li></ul><figure id="cd988583-25d3-4076-82aa-c2d41e9de703"><a href="https://pep8.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">PEP 8: The Style Guide for Python Code</div><div class="bookmark-description">This document gives coding conventions for the Python code comprising the standard library in the main Python distribution. Please see the companion informational PEP describing style guidelines for the C code in the C implementation of Python . This document and PEP 257 (Docstring Conventions) were adapted from Guido&#x27;s original Python Style Guide essay, with some additions from Barry&#x27;s style guide .</div></div><div class="bookmark-href"><img src="https://pep8.org/images/favicon.png" class="icon bookmark-icon"/>https://pep8.org/</div></div></a></figure><ul id="95fbb0c7-6a21-4dfc-9bb6-aef4f2e5e109" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Repo标准</span><p id="cb108f1f-29a0-4ab0-a21f-a28666f4db8e" class="">部署私有Gitlab服务器</p></li></ul><figure id="af0b5e97-c109-419c-a91b-a5213bae0af9"><a href="https://about.gitlab.com/install/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download and install GitLab</div><div class="bookmark-description">Learn about the various GitLab installation packages and downloads for Ubuntu, Debian, Docker, Google Cloud, and many more.</div></div><div class="bookmark-href"><img src="https://about.gitlab.com/ico/favicon.ico" class="icon bookmark-icon"/>https://about.gitlab.com/install/</div></div><img src="https://about.gitlab.com/images/opengraph/gitlab-blog-cover.png" class="bookmark-image"/></a></figure><ul id="ef5cad9b-88d9-49b6-9ad2-12ea9fb68e34" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">注释与文档系统</span><ul id="7da2d2d9-e983-46e3-975c-623050c061ba" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">规范函数注释规则</span></li></ul></li></ul><figure id="12fd7007-566b-4a67-a0ca-88c3cc74484a"><a href="https://www.sphinx-doc.org/en/master/examples.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Projects using Sphinx - Sphinx 4.0.0+ documentation</div><div class="bookmark-description">This is an (incomplete) alphabetic list of projects that use Sphinx or are experimenting with using it for their documentation. If you like to be included, please mail to the Google group. I&#x27;ve grouped the list into sections to make it easier to find interesting examples.</div></div><div class="bookmark-href"><img src="https://www.sphinx-doc.org/favicon.ico" class="icon bookmark-icon"/>https://www.sphinx-doc.org/en/master/examples.html</div></div></a></figure><h3 id="501b95f5-4a37-4e65-aa03-8b745f59af2b" class="">1，数据导入/存储</h3><ul id="07596566-26c4-446f-88df-dd99fa46ea21" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><mark class="highlight-teal_background">元数据与类结构</mark>设计</span></li></ul><ul id="0ffc170e-b57a-4813-b55e-f58c94c8d6a8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><mark class="highlight-teal_background">账户类</mark>设计</span></li></ul><ul id="4ff3ff9a-232d-4c75-975d-e956a3882c6f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">python数据接口数据获取</span></li></ul><ul id="e2be3ef7-dfaa-4975-8ef4-ff553efc6bfa" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">数据库构建</span></li></ul><ul id="7e6d3366-981e-43d2-b106-3593c694c4e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">数据组织形式设计</span></li></ul><ul id="0d70b473-d084-4189-ac28-e37f5aa424c0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">python针对数据库的<mark class="highlight-teal_background">增删查改接口</mark></span></li></ul><ul id="b1fd6038-4462-4f63-89d4-e28504386dee" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">数据向通用过渡的pandas格式转换接口</span></li></ul><h3 id="8d78f774-899d-4668-a570-4192dc5f518d" class="">2，分析</h3><ul id="336377ec-143d-4fc7-b81b-4ede32e9ec87" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">将pandas dataframe处理为K线数据</span></li></ul><ul id="476fde27-71ca-43ac-a8f6-27557313e63e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><mark class="highlight-teal_background">编写移动平均等股票数据处理方法</mark></span></li></ul><ul id="69b89aba-1e78-4e6b-91ee-0b8176633feb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">财报数据结构化处理与对应</span></li></ul><h3 id="f5db1f2a-e365-49bc-a24d-d11472f463ac" class="">3，因子构建</h3><ul id="28f4ca96-39ea-4d79-ae8b-8daa50717264" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">设计<mark class="highlight-teal_background">单因子类</mark>输入，输出，结构，关联关系等</span></li></ul><ul id="e6e2c214-b29c-4f47-b1db-a1a1f4d2de17" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">对因子的属性字段做出梳理，分析，依据来源，种类，相关性等信息作为因子描述字段，同时索引对应的相关关系</span></li></ul><h3 id="e6a94905-c5d5-4ecd-a945-e7027b4ea038" class="">4，模型训练</h3><ul id="a42239f1-4697-4d42-bd4c-cd4da95baaf8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">基于CPU的XGBoost等模型运作</span></li></ul><ul id="30054a63-6ab0-407a-816a-210524e9fd87" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">基于GPU的LSTM基础模型训练</span></li></ul><h3 id="f2728178-ae89-437b-bd4f-41adcb1cf0ee" class="">5，回测</h3><ul id="a4ab17eb-a960-4f60-9d84-7c518e9a060f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">设计实现<mark class="highlight-teal_background">回测类</mark>，关键操作需要高度包装</span><ul id="9bf33f3e-662a-4abd-beb1-6d93fce39439" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">动态时间序列</span></li></ul><ul id="b49eb0fd-7614-460e-968f-acaafd82d1a4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">关键输入数据</span></li></ul><ul id="2505061a-2e15-49dc-bdb8-7937dc346920" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">关键输出数据</span></li></ul><ul id="f829dfb4-c360-49f6-a987-8af35ede14e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">关键字段权限与属性</span></li></ul><ul id="6d3fb1ed-9ad8-4521-94c1-aa68c4aab709" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">完善的兼容和自动分析不同数据类功能</span></li></ul><ul id="b808af9f-c968-4bf4-89da-0cbf5dd03ea5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">开放性的字段扩展性</span></li></ul><ul id="7cd59ed7-660f-439a-a861-119ddb8fd4c4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">使用配置文件保存关键操作属性信息</span></li></ul></li></ul><ul id="97bdd97e-0de2-46c4-90a1-cea82ca68afe" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">输出的归一化。使各数据项数据范围统一并且保留恢复方法</span></li></ul><h3 id="e471cb3f-c142-4376-b244-99db73a0911e" class="">6，评估</h3><ul id="b2237778-d830-41c7-9a57-b13ab42b77ad" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">针对回测输出的统计，计算，并关联账户类</span></li></ul><ul id="90652c82-eb7a-4f3b-aacb-8980938601be" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">设计回测数据转换为供绘图的<mark class="highlight-teal_background">中间数据相关类</mark>与方法</span></li></ul><h3 id="232fee4f-a09c-4847-8d76-c03bd0c3c161" class="">7，绘图的整体最简实现</h3><ul id="e97ca4ac-592b-4dd1-acce-fd45fcb48fb7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">针对供绘图的中间数据格式，产出固定类型的数据图表，相应的<mark class="highlight-teal_background">绘图保有类</mark></span></li></ul></div></p><hr id="5c536312-6de9-4bad-af3d-2a4785c421db"/><ul id="90e54f0c-61a8-44d2-a13b-931cc0bab484" class="toggle"><li><details open=""><summary>最佳实践：</summary><ul id="af8e2cae-8d96-4f4f-b399-f1650da0e98f" class="toggle"><li><details open=""><summary>运行一键数据入库</summary></details></li></ul><ul id="8a3d5841-c6f0-4a8b-8a65-3457555002bb" class="toggle"><li><details open=""><summary>高级API进行一键出图</summary><ul id="1b0105bb-1145-43ff-9c2c-9314920ed8d6" class="toggle"><li><details open=""><summary>个股出图</summary></details></li></ul><ul id="6823f690-c020-461a-a013-53fe622085fb" class="toggle"><li><details open=""><summary>多股对比出图</summary></details></li></ul></details></li></ul><ul id="e905a773-7a98-490c-9c51-747a43e60e0c" class="toggle"><li><details open=""><summary>策略方法固定输入输出</summary></details></li></ul><ul id="ecf2bd72-3982-48cd-95b4-862209bc2ba6" class="toggle"><li><details open=""><summary>一键回测</summary></details></li></ul></details></li></ul><h2 id="6163527b-887a-4e84-ad5b-e803247b404c" class="">阶段二</h2><p id="af8b4c7e-9a8b-474e-915e-4650ff3ac4e4" class="">在阶段1的基础上，实现了基本策略的设计，验证，交易等关键操作。并假设已产生足够的盈利的情况下，整体的诉求将会进一步扩展：<div class="indented"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1fc0237b-c969-4da5-8466-222d62d20eed"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">1，需要实现关键部分自研的替代；</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="affc4f57-8ae3-4205-bef6-47b7821a5faa"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">2，需要更严格的数据加密手段，例如全局RSA加密传输等等；</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="416822b3-0927-4f26-a8af-f3ac22411015"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">3，需要全链路保证数据安全；</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f99c9b2d-a941-4fef-bb19-b856d4f3cd2d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">4，需要真正的实验环境+前后端+用户界面；</div></figure></div></p><p id="93bba738-1c91-4225-8542-9972ac3cac1a" class="">因此第二阶段的任务主要分为以下重要部分：</p><h3 id="042da366-898f-40b7-86a8-0d165d27f7eb" class="">实验环境</h3><ul id="6cb30379-97f8-4d13-9652-a62c9ff488a0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">线上编辑器</span><ul id="382df204-1bab-406c-8ca5-3130655f898c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">python作为语法，生成规格化的方法外壳，固定输入输出和执行方式，类似Leetcode；</span></li></ul><ul id="c608090c-749d-42ee-975c-b855884f3e5d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持数据项检索，拖拽，可视化</span></li></ul><ul id="67a643a6-a110-4a77-bd72-115870a53bd8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持数据因子库检索，拖拽，可视化</span></li></ul><ul id="8a89ab67-9771-453f-ad24-d2ad1a3e871a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持回测，以及对应产生数据的可视化</span></li></ul><ul id="974ddf0d-256f-4808-8319-92be55c8fbb6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">自制基础镜像以及衍生的特殊环境镜像用来处理不同类型任务</span><ul id="5071b90f-24bb-430e-80e1-0ee42db48b4c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">DeepLearning（Pytorch）；</span></li></ul><ul id="456c235a-dccf-48f5-aa3e-fd218512b16d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">GIS（GDAL）；</span></li></ul><ul id="7baa2340-8d9a-4b1d-9e8a-2b611bcda8da" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Scipy；Boost；(Scikit-Learn,XGBoost)</span></li></ul><ul id="0d605aa5-6489-4f25-ba38-48f5cf7c7335" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Basic；(Important DockerFile)</span></li></ul></li></ul></li></ul><h3 id="c79cd75b-68b1-476a-a372-9dfd43037932" class="">后端服务</h3><ul id="869f3353-e1fc-457a-888f-62a11de31e23" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">自动交易委托服务</span></li></ul><ul id="6bd1c5d4-35ef-4283-9a04-e28f7eba3c1f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">自动盯盘服务</span></li></ul><ul id="dd9fe80b-08fe-4cb9-a0f5-0ac07bf242d2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">大盘简报服务</span></li></ul><ul id="9483ef32-8d8b-4a11-82e0-46b9dd87f99d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">企业官网</span></li></ul><ul id="ba1df488-d2e7-4f99-bcf9-1c464d26fd7d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">整体的加密解密方案</span></li></ul><ul id="df824baa-28db-48c4-88f2-8df9cd323b71" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">隔离环境</span></li></ul><ul id="1cb18b68-e33a-4510-ac13-cd80ab72628c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">微服务化（可长期不做）</span></li></ul><p id="58a88032-bfc5-4661-9767-34af3e21c690" class="">
+</p><h3 id="0c6106db-2948-45ad-ad5c-e72e27c0efec" class="">前端部分</h3><p id="8bee1fdc-2426-4d16-a22e-ee4b0c83ce8f" class="">供给后端，数据统计，数据实验，展示，以及企业官网。放弃AdobeFlash支持。只支持Chromium内核浏览器。</p><p id="a200119b-c8c0-41de-9931-64d6122f4c31" class="">
+</p><ul id="d8eb5d08-fe2c-4230-bd64-ed449cd2f6bb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">利用可交互数据可视化框架在元数据类层级，绘制相关信息</span></li></ul><ul id="5f04c6c7-7e3e-4f77-bb98-bb66a8d949cf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">利用Vue3.0完成基础逻辑框架的搭建</span><ul id="19b20138-80be-43bc-9982-d161336ce800" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">官网主页</span></li></ul><ul id="099d1a18-03f8-4f41-b30e-9c54c53d9323" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">官网设计元素</span><ul id="4c74ed8d-ad14-4604-a122-627012b9252a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">动效</span></li></ul><ul id="9f16830c-169c-4c63-8df5-48aa2543f748" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">可交互样例</span></li></ul></li></ul></li></ul><ul id="f47925dc-ee49-4d34-8e01-90fd811dbd1c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">编辑器界面</span><ul id="37c95346-875b-4f35-9a02-b3de93c111db" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持自定义布局 类似yuque</span></li></ul><ul id="c5f4edc6-0176-40e4-abf6-0a27236986fb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持Python语法</span></li></ul><ul id="7d249681-300b-4996-93ad-af319c1fe047" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持Markdown语法</span></li></ul><ul id="a967dd76-8d9f-4014-bce2-0a7845cd947b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持Latex语法</span></li></ul><ul id="c4965c73-d265-4996-ab7c-296aecb2fd5a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">工作空间所有组件插件化，自定义化</span><ul id="231c8900-9b89-4e14-98e9-465a343ffaed" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">交易数据组件</span></li></ul><ul id="9ef8a702-3f8c-4f25-a322-b1356fc4a4e3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">因子组件</span></li></ul><ul id="7b80c187-3db6-4e01-b5b5-6cf6d6d1afec" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">策略组件</span></li></ul><ul id="fccfaebc-0dc4-4382-a165-50eb6134e463" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">编辑器组件</span></li></ul><ul id="750e59dd-a1e7-4243-b4d1-674c3b9c4b3f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">文档组件</span></li></ul><ul id="f4172f60-cb49-4cae-915f-65618d73138c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">可视化组件</span></li></ul></li></ul><ul id="378936d9-0950-4399-b0e5-341eb53a047d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持放置视频链接，并解析为播放窗口,可播放。</span></li></ul><ul id="37b83444-2cd9-440a-be3f-8ea7f19f5759" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持虚拟环境构建，启动和调度（Docker&amp;NVIDIA Docker）类似colab和 Kaggle</span></li></ul><ul id="36484113-1c40-464b-8bd3-127c0045b6e4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">支持pdf，图片，图表，插入，显示，简单常用计算，可视化。</span></li></ul></li></ul><p id="3ffbc4dd-c3c4-47a8-84bc-9031c3717157" class="">
+</p><hr id="0c66356d-2bb7-434a-b1e6-a83d9b515507"/><ul id="af246a64-e05b-4aa4-a6ee-df1580dea3be" class="toggle"><li><details open=""><summary>最佳实现</summary><ul id="3def9c2b-be8d-40b8-bd68-6d6af012e559" class="toggle"><li><details open=""><summary>在workspace内成功调度建立实例环境</summary></details></li></ul><ul id="52989611-c327-4220-99fd-2dd4d3d96987" class="toggle"><li><details open=""><summary>在编辑器内实现数据，因子，策略拖拽输入</summary></details></li></ul><ul id="2386922e-5a70-4b05-a44b-ef2ee20f7415" class="toggle"><li><details open=""><summary>在编辑器内实现python的语法高亮，补全，规格化等</summary></details></li></ul><ul id="08a430d8-c9e6-48a2-bc36-6570dccef437" class="toggle"><li><details open=""><summary>实现高兼容性的回测方法，以达到一键回测的目的</summary></details></li></ul><ul id="29854cf2-01ce-4e53-9105-628f5c56153f" class="toggle"><li><details open=""><summary>web界面的可交互数据可视化</summary></details></li></ul></details></li></ul><h2 id="13b5a4bf-c1b7-4991-913d-3e8d0be4d4bc" class="">阶段三</h2><p id="06f9140b-5aa8-4afe-8733-69cddab9ca8f" class="">第三阶段，建立在既有的量化系统良好的服务于因子分析和量化流程，则需要探索新的量化形式</p><ul id="8203cf18-1720-49df-8843-5b2ff35c9bc7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">数据相关性探索器</span><p id="6e42a8d8-d8cb-44ea-9f09-f99fdffccd1d" class="">在，数亿条结构化信息和所有的交易信息面前，可能存在着大量的非显性数据相关存在。例如，中国的存款准备金率，可能和德国的制造企业股价存在关联。</p><p id="4f6f8d63-0bcf-4978-8552-b1eaf8b0f77d" class="">这也就是所谓的蝴蝶效应。而人类对于此类相关性的挖掘，一直处于很低的程度。</p><p id="73d9f065-000d-47cc-b725-3ab2693b8672" class="">因此，我们需要设计一套能够自主尝试不同数据因子，不同股票组合，不同板块，不同数据因子，去探索其相关性的方法和策略。</p><ul id="375e7374-4262-4186-aa16-e2e017fcac29" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">数据因子池</span></li></ul><ul id="3f13f8c5-a02e-4fe1-ba04-b3431169d83f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">策略池</span></li></ul><ul id="5c93062d-a798-424a-9bb3-59e6eddcc748" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">交易数据池</span></li></ul><ul id="6dbaebff-c749-48ca-a037-c2381026aabc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">剪枝策略</span></li></ul><ul id="a44283f4-42a5-4121-8764-fbfcab57f0b8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">并行化</span></li></ul></li></ul><ul id="64be15ab-2847-428a-8c35-7c3410145bb6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">非结构化数据转换器，语言模型</span><p id="efebf07e-4aa3-4852-ba11-df3757be93fa" class="">Transformer &amp; Bert &amp; GTP3 展示了语言模型的潜力。因此依靠搜索，语言模型，共同作用把非结构化数据转换为结构化数据的尝试，是极其有价值和必要的。</p><ul id="52616873-9785-4235-8a3d-664cb7e87dd2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">市场消息爬虫&amp;监控系统</span></li></ul><ul id="80391f44-56cf-4e57-aeaa-e91940dbbbc8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">非结构化数据与结构化数据转换数据集制作</span></li></ul><ul id="d1ab0e8e-b164-4292-a071-11e53f7f79b3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">尝试语言模型与监控系统共同转换</span></li></ul></li></ul><ul id="9e3fd847-b569-4f89-a417-225032230d82" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">强化学习环境建设</span><p id="fff4fc88-6717-43f9-ad9f-ce1282e57875" class="">强化学习在规定环境下，有着相当高的自主学习能力，且没有监督学习产生的边界问题，AlphaZero在依靠大量对局的情况下，轻松击败了蒙特卡洛树为基础的深度学习模型AlphaGo，并远远超过了人类的水平。因此设计一个合理的loss函数使得强化学习训练过程在指定的池内进行自主学习，有着相当巨大的潜力。</p><ul id="0fded1ca-77c5-44c7-89c6-694e44449e95" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">设计对应算法</span></li></ul></li></ul><hr id="d4c7a956-1918-44fe-bb0a-9b2f99d280e6"/><ul id="4958085f-8ee2-41fc-87b2-9c4715fd2a12" class="toggle"><li><details open=""><summary>最佳实现</summary><ul id="c1883adc-6002-4090-99e6-256c50d7639f" class="toggle"><li><details open=""><summary>运行数据相关性探索器根据相关性返回结果个股数据</summary></details></li></ul><ul id="121a5798-5153-4719-b779-b3d43936176c" class="toggle"><li><details open=""><summary>成功将非结构化数据按照预定标准转化为结构化数据</summary></details></li></ul><ul id="a8e60e17-9200-4495-bf90-7976fc6c422e" class="toggle"><li><details open=""><summary>成功设计出供强化学习训练的环境。</summary></details></li></ul></details></li></ul><h1 id="03c35f9a-c0d6-45eb-8762-b44720c2fe31" class="">后端与数据部分相关信息</h1><h2 id="32d83fc1-c7af-42f6-b3cf-096ea6f37110" class="">交易接口API</h2><ul id="222fc70f-d3a6-4ba7-8d26-aeeb8aef1bf0" class="bulleted-list"><li>证券交易</li></ul><figure id="ef102116-5f93-4e18-a588-a86fa7e1ff88"><a href="https://www.showdoc.com.cn/linkstock?page_id=1298758476954784" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://www.showdoc.com.cn/linkstock?page_id=1298758476954784</div></div></a></figure><figure id="e3764404-092b-4640-83b2-60a5a3101682"><a href="https://github.com/ztsec/xtp_api_python" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">ztsec/xtp_api_python</div><div class="bookmark-description">中泰证券量化交易平台XTP PYTHON API接口(融资融券专用版) 本项目是中泰证券XTP极速交易PYTHON接口的开源实现，供客户在量化交易中使用PYTHON接口快速接入XTP系统。中泰证券XTP是为股票交易而生的极速交易系统，为投资者提供极速交易、极速行情、Level2行情。 目前支持xtp融资融券版本为2.2.25.5，支持win、linux平台运行 ...</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/ztsec/xtp_api_python</div></div><img src="https://avatars.githubusercontent.com/u/38371294?s=400&amp;v=4" class="bookmark-image"/></a></figure><ul id="e54415d2-2dc8-4f32-bc97-8b94b354eb00" class="bulleted-list"><li>数字货币交易</li></ul><figure id="6353e8d6-03c9-4a0b-83e8-4c461294a74a"><a href="https://github.com/ccxt/ccxt/tree/master/python" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">ccxt/ccxt</div><div class="bookmark-description">A JavaScript / Python / PHP cryptocurrency trading API with support for more than 120 bitcoin/altcoin exchanges - ccxt/ccxt</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/ccxt/ccxt/tree/master/python</div></div><img src="https://repository-images.githubusercontent.com/91253698/ea8e3c00-171a-11ea-9a81-e79b426fe455" class="bookmark-image"/></a></figure><figure id="8198fdb3-fb34-420f-9cfa-79f15ba7f06b"><a href="https://docs.pro.coinbase.com/#introduction" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Coinbase Pro API Reference</div><div class="bookmark-description">Welcome to Coinbase Pro trader and developer documentation. These documents outline exchange functionality, market details, and APIs. APIs are separated into two categories: trading and feed. Trading APIs require authentication and provide access to placing orders and other account information. Feed APIs provide market data and are public.</div></div><div class="bookmark-href"><img src="https://docs.pro.coinbase.com/favicon.ico" class="icon bookmark-icon"/>https://docs.pro.coinbase.com/#introduction</div></div></a></figure><ul id="f3f1d041-19f4-47e4-a4d9-d369d696d6bc" class="bulleted-list"><li><del>期货交易(暂缓)</del></li></ul><p id="cffb7599-b942-4efe-8270-51ff63cdc44d" class="">
+</p><h2 id="ded6736d-053b-4357-b11e-ecb6c4075128" class="">数据接口API</h2><ul id="f1831d4a-5509-4148-8ef4-242bccd4f523" class="bulleted-list"><li>A股/港股数据接口</li></ul><figure id="bf3443a6-7042-4e61-ac45-1582f0952190"><a href="https://tushare.pro/document/2" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Tushare大数据社区</div><div class="bookmark-description">沪深股票数据是Tushare最传统最有历史的数据服务项目，从一开始就为广大的投资者，尤其是量化投资者提供了稳定、便捷的接口。Tushare ...</div></div><div class="bookmark-href"><img src="https://tushare.pro/static/frontend/images/favicon-32x32.png?v=a5df4bdd9f96de59f57bb9a7a50d8f96" class="icon bookmark-icon"/>https://tushare.pro/document/2</div></div><img src="https://tushare.pro/static/frontend/images/wechat_public.png?v=847e8d705d3a409d000dce413ab5c257" class="bookmark-image"/></a></figure><ul id="c5278fdb-5223-4fa7-beec-10e925bcec8c" class="bulleted-list"><li>美股/欧洲（国际）数据接口</li></ul><figure id="48db5602-ab83-41a9-800d-74efc6b446bd"><a href="https://python-yahoofinance.readthedocs.io/en/latest/api.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">yahoofinance</div><div class="bookmark-description">Please note that the API is currently under development and things may change rapidly! Retrieves historical data from Yahoo Finance. Parameters: instrument - The a stock instrument code to query. start_date - The start date for the query (inclusive). end_date - The end date for the query (inclusive).</div></div><div class="bookmark-href"><img src="https://python-yahoofinance.readthedocs.io/favicon.ico" class="icon bookmark-icon"/>https://python-yahoofinance.readthedocs.io/en/latest/api.html</div></div></a></figure><ul id="f480f451-0b12-481f-8d44-09e6df4f4694" class="bulleted-list"><li>常规统计操作接口</li></ul><figure id="e24f65df-a9ab-40dd-a235-1d10380b4327"><a href="https://github.com/LastAncientOne/Stock_Analysis_For_Quant" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">LastAncientOne/Stock_Analysis_For_Quant</div><div class="bookmark-description">This is Stock Analysis project in Excel, Power BI, Matlab, Python, and R language with different types of analysis such as data analysis, technical analysis, fundamental analysis, quantitative analysis, and different types of trading strategies. Learn about stocks, options, bonds, mutual funds, and ETF (Exchange-traded funds).</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/LastAncientOne/Stock_Analysis_For_Quant</div></div><img src="https://avatars.githubusercontent.com/u/4218171?s=400&amp;v=4" class="bookmark-image"/></a></figure><ul id="581b68c9-3392-4e57-812b-aefc72b892c3" class="bulleted-list"><li>入库出库建库（增删查改）接口<p id="eaef72ec-7fb0-4a68-8cac-a078aedc3cd8" class=""><span style="border-bottom:0.05em solid">依据数据库方案而定。</span></p></li></ul><h2 id="5c4de899-ac47-4a8c-9ac9-26edf1fdb89e" class="">回测接口API</h2><ul id="bbf6690f-2d18-4611-9731-d785bb15ae72" class="bulleted-list"><li>回测计算API</li></ul><figure id="8d221625-9f86-4f9b-b9e8-4301134704c5"><a href="https://github.com/OOXXXXOO/rqalpha" class="block-color-teal_background bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">OOXXXXOO/rqalpha</div><div class="bookmark-description">RQAlpha 从数据获取、算法交易、回测引擎，实盘模拟，实盘交易到数据分析，为程序化交易者提供了全套解决方案。 仅限非商业使用。如需商业使用，请联系我们：public@ricequant.com RQAlpha 具有灵活的配置方式，强大的扩展性，用户可以非常容易地定制专属于自己的程序化交易系统。 RQAlpha 所有的策略都可以直接在 Ricequant 上进行回测和实盘模拟，并且可以通过微信和邮件实时推送您的交易信号。 Ricequant 是一个开放的量化算法交易社区，为程序化交易者提供免费的回测和实盘模拟环境，并且会不间断举行实盘资金投入的量化比赛。 易于使用 让您集中于策略的开发，一行简单的命令就可以执行您的策略。 活跃的社区 您可以通过访问 Ricequant 社区 获取和询问有关 RQAlpha 的一切问题，有很多优秀的童鞋会解答您的问题。 稳定的环境 每天都有会大量的算法交易在 Ricequant 上运行，无论是 RQAlpha，还是数据，我们能会做到问题秒处理，秒解决。 灵活的配置 您可以使用多种方式来配置和运行策略，只需简单的配置就可以构建适合自己的交易系统。 强大的扩展性 开发者可以基于我们提供的 Mod Hook 接口来进行扩展。 RQAlpha 提供了极具拓展性的 Mod Hook 接口，这意味着开发者可以非常容易的对接第三方库。 您可以通过如下方式使用 安装和使用Mod: # 查看当前安装的 Mod 列表及状态 $ rqalpha mod list $ rqalpha mod</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/OOXXXXOO/rqalpha</div></div><img src="https://avatars.githubusercontent.com/u/11496629?s=400&amp;v=4" class="bookmark-image"/></a></figure><ul id="657df20a-af3a-4f3b-bd5a-bc886cdc05ab" class="bulleted-list"><li>结果统计与中间结果生成API<figure id="6074b55b-9544-4639-99f0-507910129efa"><a href="https://scikit-learn.org/stable/modules/classes.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">API Reference - scikit-learn 0.24.1 documentation</div><div class="bookmark-description">Base classes for all estimators. Calibration of predicted probabilities. Meta-estimators for building composite models with transformers In addition to its current contents, this module will eventually be home to refurbished versions of Pipeline and FeatureUnion. Linear Discriminant Analysis and Quadratic Discriminant Analysis The features and estimators that are experimental aren&#x27;t subject to deprecation cycles.</div></div><div class="bookmark-href"><img src="https://scikit-learn.org/stable/_static/favicon.ico" class="icon bookmark-icon"/>https://scikit-learn.org/stable/modules/classes.html</div></div><img src="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" class="bookmark-image"/></a></figure></li></ul><figure id="0e63b940-c4cd-4d95-aabc-cb6778424323"><a href="https://pandas.pydata.org/docs/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">pandas documentation - pandas 1.2.1 documentation</div><div class="bookmark-description">Saw a typo in the documentation? Want to improve existing functionalities? The contributing guidelines will guide you through the process of improving pandas.</div></div><div class="bookmark-href"><img src="https://pandas.pydata.org/docs/_static/favicon.ico" class="icon bookmark-icon"/>https://pandas.pydata.org/docs/</div></div></a></figure><h2 id="b51e33c6-f6ed-4ccc-a6a1-95d8e194d2d4" class="">可视化数据接口API</h2><ul id="0488e8af-0cb7-4cdc-b5f7-09e7e4b85c38" class="bulleted-list"><li>中间数据绘制基础接口</li></ul><figure id="a6e79673-e3d0-4e37-83d2-acbe549dd2c2"><a href="http://seaborn.pydata.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">seaborn: statistical data visualization - seaborn 0.11.1 documentation</div><div class="bookmark-description">Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. For a brief introduction to the ideas behind the library, you can read the introductory notes . Visit the installation page to see how you can download the package and get started with it.</div></div><div class="bookmark-href"><img src="http://seaborn.pydata.org/_static/favicon.ico" class="icon bookmark-icon"/>http://seaborn.pydata.org/</div></div></a></figure><p id="6e75546c-82dc-4774-8736-b6fa9891c4e2" class="">
+</p><h2 id="53d9e13b-40e3-44c8-a2b5-5051a304e9d7" class="">因子库接口</h2><ul id="927a2459-4813-4e24-b7e2-7f4ac02b3514" class="bulleted-list"><li>文本信息处理框架<ul id="7f90f652-cc9a-4025-89c3-b5a4ceb326d1" class="bulleted-list"><li>NLP Module（Paper：）</li></ul><figure id="347df060-1306-4f82-8f13-b82ca5a46d16"><a href="https://github.com/huggingface/transformers" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">huggingface/transformers</div><div class="bookmark-description">State-of-the-art Natural Language Processing for PyTorch and TensorFlow 2.0 🤗 Transformers provides thousands of pretrained models to perform tasks on texts such as classification, information extraction, question answering, summarization, translation, text generation, etc in 100+ languages. Its aim is to make cutting-edge NLP easier to use for everyone.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/huggingface/transformers</div></div><img src="https://repository-images.githubusercontent.com/155220641/a16c4880-a501-11ea-9e8f-646cf611702e" class="bookmark-image"/></a></figure></li></ul><ul id="66f6c306-733d-43d6-b7ed-276c41ca0297" class="bulleted-list"><li>地理信息处理框架<ul id="2777df21-5313-4f33-9e42-2c5c47f83abc" class="bulleted-list"><li>GEE</li></ul><figure id="5f0fc38c-7237-4ad6-b80e-d2d5422974d9"><a href="https://earthengine.google.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Google Earth Engine</div><div class="bookmark-description">Powered by Google&#x27;s cloud infrastructure watch video Google Earth Engine combines a multi-petabyte catalog of satellite imagery and geospatial datasets with planetary-scale analysis capabilities and makes it available for scientists, researchers, and developers to detect changes, map trends, and quantify differences on the Earth&#x27;s surface.</div></div><div class="bookmark-href"><img src="https://earthengine.google.com/static/images/earth_engine-16.png" class="icon bookmark-icon"/>https://earthengine.google.com/</div></div><img src="https://earthengine.google.com/static/images/landsat_social.jpg" class="bookmark-image"/></a></figure><ul id="3e2c4cd4-4c2f-4bc0-b518-32b2d8c7f553" class="bulleted-list"><li>深度学习框架<ul id="728acfd2-6c29-46aa-944e-67e266440690" class="bulleted-list"><li>Pytorch</li></ul><figure id="719bf966-e987-4c6c-97f7-f83f19fff111"><a href="https://pytorch.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">PyTorch</div><div class="bookmark-description">Pushing the state of the art in NLP and Multi-task learning. Using PyTorch&#x27;s flexibility to efficiently research new algorithmic approaches. Educating the next wave of AI Innovators using PyTorch.</div></div><div class="bookmark-href"><img src="https://pytorch.org/favicon.ico" class="icon bookmark-icon"/>https://pytorch.org/</div></div><img src="https://pytorch.org/assets/images/pytorch-logo.png" class="bookmark-image"/></a></figure><ul id="bd1e5b58-cf61-40c4-b99c-54a36bc331e1" class="bulleted-list"><li>Visualization</li></ul><figure id="31d5d1de-f85f-4b9c-b62f-73575cb946b9"><a href="https://www.tensorflow.org/tensorboard/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">TensorBoard | TensorFlow</div><div class="bookmark-description">TensorBoard provides the visualization and tooling needed for machine learning experimentation: Tracking and visualizing metrics such as loss and accuracy Visualizing the model graph (ops and layers) Viewing histograms of weights, biases, or other tensors as they change over time Projecting embeddings to a lower dimensional space Displaying images, text, and audio data Profiling TensorFlow programs And much more TensorBoard.dev lets you easily host, track, and share your experiment results.</div></div><div class="bookmark-href"><img src="https://www.gstatic.com/devrel-devsite/prod/vbd4700e58d826f0eab371eadc20e0e343567df356800794a790eebf2ac059db2/tensorflow/images/favicon.png" class="icon bookmark-icon"/>https://www.tensorflow.org/tensorboard/</div></div><img src="https://www.tensorflow.org/site-assets/images/project-logos/tensorboard-logo-social.png" class="bookmark-image"/></a></figure></li></ul><ul id="6cbedba9-df96-4f1b-bcbd-9e1f73365f77" class="bulleted-list"><li>因子分析框架</li></ul><figure id="96b58f12-5e5d-436d-b1e5-9fabdedf873e"><a href="https://github.com/quantopian/alphalens" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">quantopian/alphalens</div><div class="bookmark-description">Alphalens is a Python Library for performance analysis of predictive (alpha) stock factors. Alphalens works great with the Zipline open source backtesting library, and Pyfolio which provides performance and risk analysis of financial portfolios. You can try Alphalens at Quantopian -- a free, community-centered, hosted platform for researching and testing alpha ideas.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/quantopian/alphalens</div></div><img src="https://avatars.githubusercontent.com/u/1393215?s=400&amp;v=4" class="bookmark-image"/></a></figure><figure id="488e5b1d-5a88-4e43-a0f4-bd4591d1c904"><a href="https://stock-analysis-engine.readthedocs.io/en/latest/index.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Stock Analysis Engine - Stock Analysis Engine 1.0.0 documentation</div><div class="bookmark-description">Build and tune investment algorithms for use with artificial intelligence (deep neural networks) with a distributed stack for running backtests using live pricing data on publicly traded companies with automated datafeeds from: IEX Cloud, Tradier and FinViz (includes: pricing, options, news, dividends, daily, intraday, screeners, statistics, financials, earnings, and more).</div></div><div class="bookmark-href"><img src="https://stock-analysis-engine.readthedocs.io/favicon.ico" class="icon bookmark-icon"/>https://stock-analysis-engine.readthedocs.io/en/latest/index.html</div></div><img src="https://asciinema.org/a/220460.png" class="bookmark-image"/></a></figure></li></ul><h2 id="427ba7d5-b2f2-4a1d-ab35-522037bd3c04" class="">策略库</h2><ul id="8d61dd43-d69d-45f0-90ab-a1b08b101c92" class="bulleted-list"><li>策略库样例</li></ul><figure id="c5424fa9-7e71-4855-b9d3-512f7addf0cc"><a href="https://github.com/fmzquant/strategies.git" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">fmzquant/strategies</div><div class="bookmark-description">quantitative trading with Javascript, Python, C++, Blockly, MyLanguage(麦语言) - fmzquant/strategies</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/fmzquant/strategies.git</div></div><img src="https://avatars.githubusercontent.com/u/3872209?s=400&amp;v=4" class="bookmark-image"/></a></figure><p id="36459680-c41e-4d8e-a0d3-ca7529c03bc4" class="">
+</p><h1 id="338d1adb-b526-4e00-88d3-0feff4e9a2df" class="">前端部分相关信息</h1><h2 id="f739a711-66dc-4c81-8ed2-ceaddca1639b" class="">数据可视化</h2><figure id="8f42d2d7-b48e-4540-b5ff-4ba7c72439e0"><a href="https://d3js.org/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">D3.js - Data-Driven Documents</div><div class="bookmark-description">D3 is a JavaScript library for visualizing data with HTML, SVG, and CSS.</div></div><div class="bookmark-href"><img src="https://d3js.org/favicon.png" class="icon bookmark-icon"/>https://d3js.org/</div></div><img src="https://d3js.org/preview.png" class="bookmark-image"/></a></figure><figure id="185c1ac0-5c9f-40eb-9f05-a427a2152dc5"><a href="https://antv.vision/zh" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">AntV</div><div class="bookmark-description">AntV 是蚂蚁集团全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</div></div><div class="bookmark-href"><img src="https://antv.vision/favicon-32x32.png?v=9772447a8d07a8fe19894b5176c6cb0d" class="icon bookmark-icon"/>https://antv.vision/zh</div></div><img src="https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png" class="bookmark-image"/></a></figure><h2 id="10972d73-4a70-4187-b48f-4f303cdafd51" class="">可交互</h2><figure id="8fe4034a-e1d9-48b8-b941-4509ad2db451"><a href="https://plotly.com/dash/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Dash Overview</div><div class="bookmark-description">With Dash Enterprise, full-stack AI applications that used to require a team of front-end, back-end, and DevOps engineers can now be built, deployed, and hyperscaled by a single data scientist within hours. Install on Azure Install on AWS Watch this short video by Plotly&#x27;s VP of Product to see how Dash Enterprise delivers faster and more impactful business outcomes on AI and data science initiatives.</div></div><div class="bookmark-href"><img src="https://plotly.com/img/favicon.ico" class="icon bookmark-icon"/>https://plotly.com/dash/</div></div><img src="https://images.prismic.io/plotly-marketing-website/d076c072-a8d5-4316-9d87-be7d7109cf43_social+media+logo-01.png?auto=compress,format" class="bookmark-image"/></a></figure><p id="c9a80731-d16f-4d83-99da-b258777e6ec1" class="">
+</p><h2 id="1c247184-a6ba-4138-8e5f-2a699bda5005" class="">框架</h2><figure id="87f2b984-892c-4970-a059-a3db3abe4700"><a href="https://github.com/vuejs/vue" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">vuejs/vue</div><div class="bookmark-description">Vue.js is an MIT-licensed open source project with its ongoing development made possible entirely by the support of these awesome backers. If you&#x27;d like to join them, please consider: What&#x27;s the difference between Patreon and OpenCollective? Funds donated via Patreon go directly to support Evan You&#x27;s full-time work on Vue.js.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/vuejs/vue</div></div><img src="https://avatars.githubusercontent.com/u/6128107?s=400&amp;v=4" class="bookmark-image"/></a></figure><p id="113b1ed8-0eb8-444f-8249-87c3d7721c8f" class="">
+</p><p id="94147023-1ed0-46dd-bb0f-90035c4f6a72" class="">
+</p><h1 id="f93faf5a-53ff-4e34-9828-0c8b8edb1d78" class="">Reference</h1><p id="ec84c26d-cb95-4b87-a9f7-d319730f21f1" class="">1.量化交易接口样例</p><figure id="cfd919a7-8f43-46d9-913c-d981dfff4e7a"><a href="https://rqalpha.readthedocs.io/zh_CN/latest/notebooks/run-rqalpha-in-ipython.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">IPython 与 RQAlpha - rqalpha 4.2.x 文档</div><div class="bookmark-description">rqalpha -s 20100101 -e 20170505 -p -bm 000001.XSHG --account stock 100000 def init(context): context.stocks = [&#x27;000300.XSHG&#x27;, &#x27;000905.XSHG&#x27;, &#x27;000012.XSHG&#x27;] def handle_bar(context, bar_dict): [hs, zz, gz] = context.stocks hs_history20 = history_bars(hs, 20, &#x27;1d&#x27;, &#x27;close&#x27;) zz_history20 = history_bars(zz, 20, &#x27;1d&#x27;, &#x27;close&#x27;) hsIncrease = hs_history20[-1] - hs_history20[0] zzIncrease = zz_history20[-1] - zz_history20[0] positions =</div></div><div class="bookmark-href"><img src="https://rqalpha.readthedocs.io/favicon.ico" class="icon bookmark-icon"/>https://rqalpha.readthedocs.io/zh_CN/latest/notebooks/run-rqalpha-in-ipython.html</div></div></a></figure><p id="aa8368c1-5237-4d24-a68a-08e229691ada" class="">2.架构样例</p><figure id="d0ac3191-3069-41ae-b01e-e1bd992b6170"><a href="https://github.com/OOXXXXOO/XCloud" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">OOXXXXOO/XCloud</div><div class="bookmark-description">XCloud is an open-source AI platform which provides common AI services (computer vision, NLP, data mining and etc.) with RESTful APIs. It allows you to serve your machine learning models with few lines of code. The platform is developed and maintained by @LucasX based on Django and PyTorch.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/OOXXXXOO/XCloud</div></div><img src="https://avatars.githubusercontent.com/u/11496629?s=400&amp;v=4" class="bookmark-image"/></a></figure><p id="012ecf4d-91ae-48a1-96a4-e4eb1d2c5f8d" class="">3.量化策略库样例</p><figure id="510a2d78-ebec-4cf7-9159-dc815df211fb"><a href="https://github.com/je-suis-tm/quant-trading" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">je-suis-tm/quant-trading</div><div class="bookmark-description">We&#x27;re right 50.75 percent of the time... but we&#x27;re 100 percent right 50.75 percent of the time, you can make billions that way. --- Robert Mercer, co-CEO of Renaissance Technologies If you trade a lot, you only need to be right 51 percent of the time, we need a smaller edge on each trade.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/je-suis-tm/quant-trading</div></div><img src="https://repository-images.githubusercontent.com/127918080/f7249580-b581-11ea-8625-133cb6c3a818" class="bookmark-image"/></a></figure><figure id="0d77c087-b0b8-4461-9a53-fae01f483ced" class="link-to-page"><a href="https://www.notion.so/0d77c087b0b844619a53fae01f483ced">量化最简实现-周内效应</a></figure><figure id="908aebee-f596-4b69-ba26-d12df30ed8e0" class="link-to-page"><a href="https://www.notion.so/908aebeef5964b69ba26d12df30ed8e0">周内效应数据</a></figure></div></article></body></html>
