@@ -12,3 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ts_token = '5d198053f8882784d333645e1279bc0228a05bb8427dd1cc1f1a0b8b'
+tingo_token = '38742f63892c9c13e2ea425fa53defa939ef299b'

@@ -12,3 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+class sync():
+    def __init__(self):
+        super().__init__()
