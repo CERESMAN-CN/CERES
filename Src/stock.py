@@ -80,6 +80,7 @@ class stock(load):
             code ([code]): [code of stock]
         """
         self.stock_=self.base_data[self.base_data['ts_code']==code]
+        print(self.stock_)
         self.loadtradeInfo()
 
 
@@ -89,7 +90,7 @@ class stock(load):
 
 def main():
     print("# --------------------------- STOCK CLASS TEST Demo -------------------------- #")
-    zhongxinguoji=stock(name="中芯国际")
+    zhongxinguoji=stock(code='002049')
     # df = pdl.get_data_tiingo('MSFT', api_key=os.getenv('TIINGO_API_KEY'))
     # print(df)
 
